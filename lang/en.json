@@ -1,16 +1,45 @@
 {
   "TYPES.RegionBehavior.ambient-fx.ambient-fx": "Ambient FX",
+
   "AMBIENTFX.Behavior.FIELDS.src.label": "Effect File",
   "AMBIENTFX.Behavior.FIELDS.src.hint": "Choose an image or video texture. Transparent WebM files work especially well for atmospheric effects.",
+
+  "AMBIENTFX.Behavior.FIELDS.target.label": "FX Target",
+  "AMBIENTFX.Behavior.FIELDS.target.hint": "Choose where the visual is rendered: across the Region, on qualifying Tokens inside it, or as a fixed overlay on the viewer's screen.",
+  "AMBIENTFX.Behavior.FIELDS.target.choices.region": "Region",
+  "AMBIENTFX.Behavior.FIELDS.target.choices.token": "Token(s)",
+  "AMBIENTFX.Behavior.FIELDS.target.choices.screen": "Player Screen",
+
+  "AMBIENTFX.Behavior.FIELDS.triggerOwnership.label": "Trigger Tokens",
+  "AMBIENTFX.Behavior.FIELDS.triggerOwnership.hint": "Controls which Tokens are allowed to activate the effect. Player-Owned means a Token owned by at least one non-GM player; NPC / Unowned means a Token without a non-GM player owner.",
+  "AMBIENTFX.Behavior.FIELDS.triggerOwnership.choices.any": "Any Token",
+  "AMBIENTFX.Behavior.FIELDS.triggerOwnership.choices.playerOwned": "Player-Owned Tokens",
+  "AMBIENTFX.Behavior.FIELDS.triggerOwnership.choices.unowned": "NPC / Unowned Tokens",
+
+  "AMBIENTFX.Behavior.FIELDS.audience.label": "Audience",
+  "AMBIENTFX.Behavior.FIELDS.audience.hint": "Controls who sees the visual after it is triggered. Token Owners is evaluated separately on each connected client.",
+  "AMBIENTFX.Behavior.FIELDS.audience.choices.everyone": "Everyone",
+  "AMBIENTFX.Behavior.FIELDS.audience.choices.gm": "GM Only",
+  "AMBIENTFX.Behavior.FIELDS.audience.choices.owners": "Owners of Triggering Token(s)",
+
   "AMBIENTFX.Behavior.FIELDS.opacity.label": "Opacity",
-  "AMBIENTFX.Behavior.FIELDS.opacity.hint": "How transparent the effect is. 0 is invisible and 1 is fully opaque.",
+  "AMBIENTFX.Behavior.FIELDS.opacity.hint": "Final transparency after fade-in. 0 is invisible and 1 is fully opaque.",
+
   "AMBIENTFX.Behavior.FIELDS.scale.label": "Scale",
-  "AMBIENTFX.Behavior.FIELDS.scale.hint": "Scales the effect relative to the Region bounds. 1 fills the Region bounds using the selected Fit Mode.",
+  "AMBIENTFX.Behavior.FIELDS.scale.hint": "Scales the effect relative to its target bounds. 1 fills the target using the selected Fit Mode.",
+
   "AMBIENTFX.Behavior.FIELDS.fit.label": "Fit Mode",
-  "AMBIENTFX.Behavior.FIELDS.fit.hint": "Stretch fills the Region bounds exactly. Cover keeps the source aspect ratio and fills the bounds. Contain keeps the aspect ratio and fits entirely inside the bounds.",
+  "AMBIENTFX.Behavior.FIELDS.fit.hint": "Stretch fills the target bounds exactly. Cover keeps the source aspect ratio and fills the bounds. Contain keeps the aspect ratio and fits entirely inside the bounds.",
   "AMBIENTFX.Behavior.FIELDS.fit.choices.stretch": "Stretch",
   "AMBIENTFX.Behavior.FIELDS.fit.choices.cover": "Cover",
   "AMBIENTFX.Behavior.FIELDS.fit.choices.contain": "Contain",
+
+  "AMBIENTFX.Behavior.FIELDS.fadeIn.label": "Fade In (ms)",
+  "AMBIENTFX.Behavior.FIELDS.fadeIn.hint": "How long the visual takes to fade in, in milliseconds. Use 0 for an instant appearance. 500 = half a second.",
+
+  "AMBIENTFX.Behavior.FIELDS.fadeOut.label": "Fade Out (ms)",
+  "AMBIENTFX.Behavior.FIELDS.fadeOut.hint": "How long the visual takes to fade out, in milliseconds. Use 0 for an instant disappearance. 500 = half a second.",
+
   "AMBIENTFX.Behavior.FIELDS.clipToRegion.label": "Clip to Region Shape",
-  "AMBIENTFX.Behavior.FIELDS.clipToRegion.hint": "When enabled, the visual is masked by the Region polygon instead of merely using its rectangular bounds."
+  "AMBIENTFX.Behavior.FIELDS.clipToRegion.hint": "Region target only. When enabled, the visual is masked by the Region polygon instead of merely using its rectangular bounds."
 }
