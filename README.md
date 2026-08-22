@@ -1,50 +1,58 @@
 # Ambient FX
 
-**Version 1.0.0**
+**Version 1.1.0 development build**
 
-Ambient FX is a Foundry VTT v14 module that adds visual effects to Scene Regions. Effects automatically activate when a token enters a Region and stop when the last token leaves, allowing for localized fog, particles, magical effects, environmental animations, and more.
+Ambient FX is a Foundry VTT v14 module that adds visual effects to Scene Regions. Effects automatically react to Tokens entering and leaving Regions and can render over the Region itself, over qualifying Tokens, or over the viewer's screen.
 
-> **Work in progress:** V1 is an early prototype intended for testing.
+> **Development branch:** v1.1.0 is being tested. Stable v1.0.0 remains on `main` until this version is verified.
 
-## What V1 does
+## What V1.1 adds
 
-- Add **Ambient FX** to a Scene Region.
-- Choose an image or video texture.
-- When the first token enters the Region, the visual appears.
-- It stays active while one or more tokens remain inside.
-- When the final token exits, the visual disappears.
-- The visual can be clipped to the actual Region polygon.
-- Images and looping video textures such as transparent `.webm` are supported.
+- **Fade In / Fade Out** durations in milliseconds.
+- **FX Target**:
+  - **Region**: the original V1 behavior.
+  - **Token(s)**: creates an effect over each qualifying Token currently inside the Region.
+  - **Player Screen**: creates a fixed screen-space overlay which does not pan or zoom with the map.
+- **Trigger Tokens**:
+  - Any Token.
+  - Player-Owned Tokens.
+  - NPC / Unowned Tokens.
+- **Audience**:
+  - Everyone.
+  - GM Only.
+  - Owners of Triggering Token(s).
+- Token-targeted FX reconcile independently, so one Token leaving does not restart effects on other Tokens which remain inside.
+- Existing V1 Region clipping, opacity, scale, fit modes, scene restoration, and stale-video-load protection remain in place.
 
-## Install for local testing
+## Install for development testing
 
-1. Extract the `ambient-fx` folder into `FoundryVTT/Data/modules/`.
-2. Restart Foundry if it is running.
-3. Enable **Ambient FX** in your world's Manage Modules window.
-4. Open a Scene and create/select a **Region**.
-5. Add a Region Behavior and choose **Ambient FX**.
-6. Pick an Effect File and save the behavior.
-7. Move a token into the Region.
+1. Back up anything important before testing development builds.
+2. Extract the `ambient-fx` folder into `FoundryVTT/Data/modules/`, replacing the installed test copy if necessary.
+3. Restart Foundry.
+4. Enable **Ambient FX** in the world.
+5. Create/select a Scene Region and add **Ambient FX** as a Region Behavior.
+6. Select an Effect File and test the new Target, Trigger Tokens, Audience, Fade In, and Fade Out settings.
 
-## V1 settings
+## Settings
 
 - **Effect File**: image or video texture.
+- **FX Target**: Region, Token(s), or Player Screen.
+- **Trigger Tokens**: Any Token, Player-Owned Tokens, or NPC / Unowned Tokens.
+- **Audience**: Everyone, GM Only, or Owners of Triggering Token(s).
 - **Opacity**: `0` to `1`.
 - **Scale**: `0.1` to `5`.
-- **Fit Mode**:
-  - **Stretch**: exactly matches the Region bounds.
-  - **Cover**: keeps aspect ratio and fills the Region bounds.
-  - **Contain**: keeps aspect ratio and fits inside the Region bounds.
-- **Clip to Region Shape**: masks the effect using the Region polygons.
+- **Fit Mode**: Stretch, Cover, or Contain.
+- **Fade In (ms)**: transition time when an effect appears.
+- **Fade Out (ms)**: transition time when an effect disappears.
+- **Clip to Region Shape**: Region target only; masks the effect using the Region polygons.
 
-## Important V1 limitations
+## Important current limitations
 
-- The visual activates for everyone viewing the Scene when **any token** is in the Region.
-- There is no fade-in/fade-out yet.
-- There is no per-player visibility yet.
-- There is no distance falloff yet.
+- **Audience / player ownership behavior still needs testing from a separate player client.**
+- There is no distance-based falloff yet.
 - Region holes may need improved even/odd polygon mask handling.
-- The visual currently lives in Foundry's Interface canvas group. V2 can introduce a dedicated rendering layer if we want more exact ordering with tokens, lighting, and fog-of-war.
+- Token-targeted effects update to the Token's final location after a within-Region movement animation; truly frame-perfect attachment can be improved later if needed.
+- Screen targeting uses Foundry v14's unbound Overlay Canvas Group so the effect stays fixed to the viewer's camera rather than the world map.
 
 ## Why module.json has no comments
 
@@ -66,7 +74,7 @@ ambient-fx/
 
 Source: https://github.com/e17o4/Foundry-Ambient-FX
 
-The release manifest and download URLs in `module.json` point at GitHub Releases. They will become usable by Foundry once a release containing `module.json` and `module.zip` is published.
+Stable releases use the manifest and download URLs stored in `module.json`.
 
 ## AI Disclaimer
 
