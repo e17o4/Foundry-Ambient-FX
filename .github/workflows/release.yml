@@ -1,0 +1,72 @@
+name: Build and Publish Foundry Release
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "module.json"
+      - ".github/workflows/release.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Grab the exact source that triggered this workflow.
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      # Read the version directly from module.json so the manifest remains
+      # the single source of truth for release numbering.
+      - name: Read module version
+        id: version
+        shell: bash
+        run: |
+          VERSION=$(node -p "require('./module.json').version")
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag=v$VERSION" >> "$GITHUB_OUTPUT"
+
+      # Do not create a duplicate release if this version already exists.
+      - name: Check whether release already exists
+        id: existing
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Foundry expects the module files at the root of module.zip.
+      # We intentionally leave GitHub-only files such as .github/ out of it.
+      - name: Build module.zip
+        if: steps.existing.outputs.exists == 'false'
+        shell: bash
+        run: |
+          zip -r module.zip module.json README.md LICENSE lang scripts
+
+      # Publish both assets Foundry expects:
+      #   module.json = install/update manifest
+      #   module.zip  = actual module package
+      - name: Publish GitHub release
+        if: steps.existing.outputs.exists == 'false'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          gh release create "$TAG" \
+            module.json \
+            module.zip \
+            --target "$GITHUB_SHA" \
+            --title "Ambient FX v$VERSION" \
+            --notes "Initial Ambient FX release for Foundry VTT v14. Region-based image and WebM effects activate when tokens enter a Region and disappear when the final token leaves. Tested manually on Foundry VTT 14.367 as GM; separate player-client testing is still pending."
