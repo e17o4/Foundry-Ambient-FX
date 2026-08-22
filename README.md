@@ -70,4 +70,4 @@ The release manifest and download URLs in `module.json` point at GitHub Releases
 
 ## AI Disclaimer
 
-Why yes i did have chat GPT make this for me. why? cause I'm already  learning C, C++, C#, and don't wanna forking learn Javascript on  top of that for a  tool i MOSTLY wanted for my own personal convenience. no one else made it as far as I'm aware. so i asked GPT nicely to make it. keep your anti AI hate to yourself  please. i know. and i don't care. go talk to GPT about it. SPEAKING OF TOOLS if you can make something better then BY ALL MEANS PLEASE FORK THIS AND  DO BETTER! and let me know! i wanna see.
+Why yes i did have chat GPT make this for me. why? cause I'm already  learning C, C++, C#, and don't wanna forking learn Javascript on  top of that for a  tool i MOSTLY wanted for my own personal convenience. I couldn't find anything that worked quite the way I wanted. so i asked GPT nicely to make it. keep your anti AI hate to yourself  please. i know. and i don't care. go talk to GPT about it. SPEAKING OF TOOLS if you can make something better then BY ALL MEANS PLEASE FORK THIS AND  DO BETTER! and let me know! i wanna see.
