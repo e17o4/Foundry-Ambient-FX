@@ -1,0 +1,16 @@
+{
+  "TYPES.RegionBehavior.ambient-fx.ambient-fx": "Ambient FX",
+  "AMBIENTFX.Behavior.FIELDS.src.label": "Effect File",
+  "AMBIENTFX.Behavior.FIELDS.src.hint": "Choose an image or video texture. Transparent WebM files work especially well for atmospheric effects.",
+  "AMBIENTFX.Behavior.FIELDS.opacity.label": "Opacity",
+  "AMBIENTFX.Behavior.FIELDS.opacity.hint": "How transparent the effect is. 0 is invisible and 1 is fully opaque.",
+  "AMBIENTFX.Behavior.FIELDS.scale.label": "Scale",
+  "AMBIENTFX.Behavior.FIELDS.scale.hint": "Scales the effect relative to the Region bounds. 1 fills the Region bounds using the selected Fit Mode.",
+  "AMBIENTFX.Behavior.FIELDS.fit.label": "Fit Mode",
+  "AMBIENTFX.Behavior.FIELDS.fit.hint": "Stretch fills the Region bounds exactly. Cover keeps the source aspect ratio and fills the bounds. Contain keeps the aspect ratio and fits entirely inside the bounds.",
+  "AMBIENTFX.Behavior.FIELDS.fit.choices.stretch": "Stretch",
+  "AMBIENTFX.Behavior.FIELDS.fit.choices.cover": "Cover",
+  "AMBIENTFX.Behavior.FIELDS.fit.choices.contain": "Contain",
+  "AMBIENTFX.Behavior.FIELDS.clipToRegion.label": "Clip to Region Shape",
+  "AMBIENTFX.Behavior.FIELDS.clipToRegion.hint": "When enabled, the visual is masked by the Region polygon instead of merely using its rectangular bounds."
+}
