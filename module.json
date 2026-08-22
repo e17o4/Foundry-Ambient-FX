@@ -1,0 +1,39 @@
+{
+  "id": "ambient-fx",
+  "title": "Ambient FX",
+  "description": "Foundry VTT v14 region-based visual effects. A looping image or video appears while one or more tokens are inside a Region and disappears when the Region is empty.",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "14",
+    "verified": "14.367"
+  },
+  "authors": [
+    {
+      "name": "e17o4"
+    }
+  ],
+  "esmodules": [
+    "scripts/ambient-fx.mjs"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "documentTypes": {
+    "RegionBehavior": {
+      "ambient-fx": {
+        "filePathFields": {
+          "src": [
+            "TEXTURE"
+          ]
+        }
+      }
+    }
+  },
+  "url": "https://github.com/e17o4/Foundry-Ambient-FX",
+  "manifest": "https://github.com/e17o4/Foundry-Ambient-FX/releases/latest/download/module.json",
+  "download": "https://github.com/e17o4/Foundry-Ambient-FX/releases/latest/download/module.zip"
+}
